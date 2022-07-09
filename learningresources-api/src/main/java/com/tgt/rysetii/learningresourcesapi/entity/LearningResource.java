@@ -26,6 +26,9 @@ public class LearningResource {
         this.publishedDate = publishedDate;
         this.retiredDate = retiredDate;
     }
+    public Double getProfitMargin(){
+        return (this.sellingPrice-this.costPrice)/this.getSellingPrice();
+    }
 
     public int getId() {
         return id;

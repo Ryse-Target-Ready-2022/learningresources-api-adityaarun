@@ -7,6 +7,8 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LearningResourceService {
@@ -74,5 +76,16 @@ public class LearningResourceService {
         catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+
+    // function to sort learning resource list by profit margin in non-increasing order
+    public void sortLearningResourcesByProfitMargin(List<LearningResource> learningResourceList){
+        Collections.sort(learningResourceList, new Comparator<LearningResource>(){
+            @Override
+            public int compare(LearningResource l1, LearningResource l2){
+                return l2.getProfitMargin().compareTo(l1.getProfitMargin());
+            }
+        });
     }
 }
