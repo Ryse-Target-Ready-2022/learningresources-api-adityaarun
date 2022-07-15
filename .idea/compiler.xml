@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="learningresources-api.learningresources-api.main~1" target="11" />
+      <module name="learningresources-api.learningresources-api.test~1" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

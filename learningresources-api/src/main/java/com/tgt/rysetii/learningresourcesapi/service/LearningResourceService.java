@@ -1,7 +1,9 @@
 package com.tgt.rysetii.learningresourcesapi.service;
 import com.tgt.rysetii.learningresourcesapi.entity.LearningResource;
 import com.tgt.rysetii.learningresourcesapi.entity.LearningResourceStatus;
-import org.springframework.cglib.core.Local;
+import com.tgt.rysetii.learningresourcesapi.repository.LearningResourceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -11,12 +13,32 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+@Service
 public class LearningResourceService {
+
+
+    private final LearningResourceRepository learningResourceRepository;
+
+    public LearningResourceService(LearningResourceRepository learningResourceRepository){
+        this.learningResourceRepository=learningResourceRepository;
+    }
+
+    //function to save data to database
+    public void saveLearningResources(List<LearningResource> learningResources){
+        for(LearningResource learningResource:learningResources){
+            learningResourceRepository.save(learningResource);
+        }
+    }
+
+    //function to get data from database
+    public List<LearningResource> getLearningResources(){
+        return learningResourceRepository.findAll();
+    }
 
 
 
     // function to get learningresources from csv file
-    public List<LearningResource> getLearningResources(){
+    public List<LearningResource> getLearningResources2(){
         List<LearningResource> LearningResourceList= new ArrayList<>();
         try{
             BufferedReader bufferedReader= new BufferedReader(new FileReader("LearningResource.csv"));
@@ -45,7 +67,7 @@ public class LearningResourceService {
 
 
     //function to save data to csv file
-    public void saveLearningResources(List<LearningResource> LearningResourceList){
+    public void saveLearningResources2(List<LearningResource> LearningResourceList){
         try{
             BufferedWriter bufferedWriter= new BufferedWriter(new FileWriter("LearningResource.csv"));
             for(LearningResource learningResource: LearningResourceList){
