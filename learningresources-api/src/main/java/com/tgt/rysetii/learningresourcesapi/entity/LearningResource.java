@@ -1,16 +1,36 @@
 package com.tgt.rysetii.learningresourcesapi.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "learning_resources")
 public class LearningResource {
 
+    @Id
+    @Column(name = "learning_resource_id")
     private int id;
+
+    @Column(name = "learning_resource_name")
     private String name;
+
+    @Column(name = "cost_price")
     private Double costPrice;
+
+    @Column(name = "selling_price")
     private Double sellingPrice;
+
+    @Column(name = "learning_resource_status")
+    @Enumerated(EnumType.STRING)
     private LearningResourceStatus productStatus;
+
+    @Column(name = "created_date")
     private LocalDate createdDate;
+
+    @Column(name = "published_date")
     private LocalDate publishedDate;
+
+    @Column(name = "retired_date")
     private LocalDate retiredDate;
 
     public LearningResource() {
@@ -93,4 +113,5 @@ public class LearningResource {
     public void setRetiredDate(LocalDate retiredDate) {
         this.retiredDate = retiredDate;
     }
+
 }
