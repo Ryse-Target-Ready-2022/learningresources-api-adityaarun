@@ -35,6 +35,15 @@ public class LearningResourceService {
         return learningResourceRepository.findAll();
     }
 
+    //function to get learning resource by id
+    public LearningResource getLearningResourceById(Integer id){
+        return learningResourceRepository.findById(id).orElseThrow(()-> new RuntimeException("Id Not Found"));
+    }
+
+    //function to delete learning resource
+    public void deleteLearningResourceById(Integer id){
+        learningResourceRepository.deleteById(id);
+    }
 
 
     // function to get learningresources from csv file
